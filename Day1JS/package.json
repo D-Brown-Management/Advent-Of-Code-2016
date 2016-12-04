@@ -1,0 +1,9 @@
+{
+  "name": "day1-js",
+  "version": "0.0.0",
+  "description": "Day1JS",
+  "main": "app.js",
+  "author": {
+    "name": "steve"
+  }
+}

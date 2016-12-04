@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +13,7 @@ namespace Day1CS
         static void Main(string[] args)
         {
             var currentHeading = Direction.North;
-            var input = File.ReadAllText("input.txt");            
+            var input = File.ReadAllText("input-sean.txt");            
             var instrArray = input.Split(',');
             var currentPoint = new Location
             {
