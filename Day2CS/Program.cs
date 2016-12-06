@@ -15,6 +15,10 @@ namespace Day2CS
             IPoint point = new PointTwo();
             point.X = 0;
             point.Y = 2;
+
+            //IPoint point = new Point();
+            //point.X = 1;
+            //point.Y = 1;
             foreach (string line in input)
             {
                 for (int i = 0; i < line.Length; i++)
