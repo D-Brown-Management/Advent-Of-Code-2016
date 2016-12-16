@@ -1,32 +1,39 @@
-"use strict";
-var fs = require("fs");
-var inputArray = readInputArray('input.txt');
-var currentDirection = 0;
-var currentPosition = {
+﻿import fs = require("fs");
+import readline = require('readline');
+const inputArray = readInputArray('input.txt');
+
+let currentDirection = 0;
+let currentPosition = <Position>{
     x: 0,
-    y: 0
+    y: 0    
 };
-var positionArray = [];
+
+let positionArray = [];
 positionArray.push({ x: 0, y: 0 });
-var firstCrossFound = false;
-for (var i = 0; i < inputArray.length; i++) {
-    var dirChar = inputArray[i].trim().charAt(0);
+let firstCrossFound = false;
+for (let i = 0; i < inputArray.length; i++) {
+    
+    const dirChar = inputArray[i].trim().charAt(0);
     // set new direction
     switch (dirChar) {
         case "L":
             if (currentDirection > 0) {
                 currentDirection = (currentDirection - 1) % 4;
-            }
+            }                
             else {
                 currentDirection = 3;
             }
             break;
+
         case "R":
             currentDirection = (currentDirection + 1) % 4;
             break;
+
     }
-    var spaces = parseInt(inputArray[i].trim().substring(1));
-    var _loop_1 = function (i_1) {
+    
+    const spaces = parseInt(inputArray[i].trim().substring(1));
+
+    for (let i = 0; i < spaces; i++) {
         // move spaces
         switch (currentDirection) {
             case 0:
@@ -42,34 +49,45 @@ for (var i = 0; i < inputArray.length; i++) {
                 currentPosition.x -= 1;
                 break;
         }
-        var posMap = { x: currentPosition.x, y: currentPosition.y };
-        var pospos = positionArray.find(function (elem) {
+        const posMap = { x: currentPosition.x, y: currentPosition.y };
+        const pospos = positionArray.find(function (elem) {
             return elem.x === posMap.x && elem.y === posMap.y;
         });
+        
         if (!pospos) {
             positionArray.push(posMap);
-        }
-        else {
+        } else {
             if (!firstCrossFound) {
-                var part2Answer = Math.abs(posMap.x) + Math.abs(posMap.y);
+                let part2Answer = Math.abs(posMap.x) + Math.abs(posMap.y);
                 console.log("Part 2 Found:", part2Answer);
                 firstCrossFound = true;
             }
+            
         }
-    };
-    for (var i_1 = 0; i_1 < spaces; i_1++) {
-        _loop_1(i_1);
     }
+    
 }
+
 console.log("Part1 Location: ", Math.abs(currentPosition.x) + Math.abs(currentPosition.y));
+
 finishApp();
-function readInputArray(filename) {
-    var file = fs.readFileSync('input.txt', { encoding: 'utf8' });
+
+function readInputArray(filename: string): Array<string> {
+    var file = fs.readFileSync('input.txt', { encoding: 'utf8' });    
     var directionArray = file.split(',');
+
     return directionArray;
 }
-function finishApp() {
+
+function finishApp(): void {
     console.log('Press any key to continue...');
+        
     process.stdin.resume();
     process.stdin.on('data', process.exit.bind(process, 0));
 }
+
+interface Position {
+    x: number;
+    y: number;
+}
+    

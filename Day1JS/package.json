@@ -5,5 +5,8 @@
   "main": "app.js",
   "author": {
     "name": "steve"
+  },
+  "dependencies": {
+    "@types/node": "^6.0.52"
   }
 }
