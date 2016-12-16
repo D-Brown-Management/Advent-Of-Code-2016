@@ -13,7 +13,7 @@ namespace Day1CS
         static void Main(string[] args)
         {
             var currentHeading = Direction.North;
-            var input = File.ReadAllText("input-sean.txt");            
+            var input = File.ReadAllText("input.txt");            
             var instrArray = input.Split(',');
             var currentPoint = new Location
             {
